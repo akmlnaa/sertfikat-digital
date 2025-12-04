@@ -19,7 +19,7 @@
         <div class="card shadow-sm border-0 mb-3">
             <div class="card-body text-center">
                 <h5 class="card-title">👥 Pengguna</h5>
-                <p class="text-muted">Kelola data pengguna sistem</p>
+                <p class="text-muted">Kelola data pengguna</p>
                 <a href="{{ route('pengguna.index') }}" class="btn btn-primary">Kelola</a>
             </div>
         </div>

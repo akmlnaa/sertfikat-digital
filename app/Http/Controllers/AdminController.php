@@ -6,6 +6,8 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+
 
 class AdminController extends Controller
 {
@@ -52,11 +54,12 @@ class AdminController extends Controller
     // Sertifikat kadaluarsa
     $sertifikatKadaluarsa = \App\Models\Sertifikat::where('tgl_kadaluarsa', '<', now())->count();
 
-    // Sertifikat per divisi (untuk grafik)
-    $sertifikatPerDivisi = \App\Models\Sertifikat::selectRaw('divisi, COUNT(*) as total')
-        ->join('pengguna', 'pengguna.id_pengguna', '=', 'sertifikat.id_pengguna')
-        ->groupBy('divisi')
-        ->pluck('total', 'divisi');
+    $grafikKompetensi = DB::table('sertifikat')
+    ->join('pengguna', 'sertifikat.id_pengguna', '=', 'pengguna.id_pengguna')
+    ->select('pengguna.kompetensi', DB::raw('COUNT(*) as total'))
+    ->groupBy('pengguna.kompetensi')
+    ->get();
+
 
     // Notifikasi terbaru
     $notifikasiTerbaru = \App\Models\Notifikasi::orderBy('tanggal_kirim', 'DESC')
@@ -69,7 +72,7 @@ class AdminController extends Controller
         'totalSertifikat' => $totalSertifikat,
         'totalNotifikasi' => $totalNotifikasi,
         'sertifikatKadaluarsa' => $sertifikatKadaluarsa,
-        'sertifikatPerDivisi' => $sertifikatPerDivisi,
+        'grafikKompetensi' => $grafikKompetensi,
         'notifikasiTerbaru' => $notifikasiTerbaru,
     ]);
 }

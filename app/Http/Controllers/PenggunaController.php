@@ -24,7 +24,7 @@ public function store(Request $request)
     $request->validate([
         'nama' => 'required',
         'nip' => 'required',
-        'jabatan' => 'required',
+        'kompetensi' => 'required',
         'divisi' => 'required',
         'email' => 'required|email',
         'no_hp' => 'required',
@@ -54,7 +54,7 @@ public function update(Request $request, $id)
     $request->validate([
         'nama' => 'required',
         'nip' => 'required',
-        'jabatan' => 'required',
+        'kompetensi' => 'required',
         'divisi' => 'required',
         'email' => 'required|email',
         'no_hp' => 'required',

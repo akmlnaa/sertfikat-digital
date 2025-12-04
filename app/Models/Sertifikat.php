@@ -16,7 +16,7 @@ class Sertifikat extends Model
     protected $fillable = [
         'id_pengguna',
         'nomor_sertifikat',
-        'nama_sertifikat',
+        'sertifikasi',
         'tgl_terbit',
         'tgl_kadaluarsa',
         'status'

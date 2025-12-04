@@ -20,8 +20,8 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label fw-medium">Jabatan</label>
-            <input type="text" name="jabatan" class="form-control" placeholder="Masukkan jabatan" required>
+            <label class="form-label fw-medium">Kompetensi</label>
+            <input type="text" name="kompetensi" class="form-control" placeholder="Masukkan kompetensi" required>
         </div>
 
         <div class="col-md-6">

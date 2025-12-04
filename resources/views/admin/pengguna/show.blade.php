@@ -20,8 +20,8 @@
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <label class="form-label fw-medium">Jabatan</label>
-            <input type="text" class="form-control" value="{{ $pengguna->jabatan }}" readonly>
+            <label class="form-label fw-medium">Kompetensi</label>
+            <input type="text" class="form-control" value="{{ $pengguna->kompetensi }}" readonly>
         </div>
         <div class="col-md-6">
             <label class="form-label fw-medium">Divisi</label>

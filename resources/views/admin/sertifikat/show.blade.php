@@ -13,8 +13,8 @@
             <td>{{ $sertifikat->nomor_sertifikat }}</td>
         </tr>
         <tr>
-            <th>Nama Sertifikat</th>
-            <td>{{ $sertifikat->nama_sertifikat }}</td>
+            <th>Sertifikasi</th>
+            <td>{{ $sertifikat->sertifikasi }}</td>
         </tr>
         <tr>
             <th>Nama Pengguna</th>

@@ -86,12 +86,24 @@
 
 
 {{-- ====================== --}}
-{{-- CHART SERTIFIKAT PER DIVISI --}}
+{{-- CHART SERTIFIKAT PER KOMPETENSI --}}
 {{-- ====================== --}}
-<div class="card card-custom p-4 mb-4">
-    <h5 class="fw-semibold mb-3"><i class="bi bi-graph-up-arrow me-2"></i>Sertifikat per Divisi</h5>
-    <canvas id="chartDivisi" height="100"></canvas>
+<div class="card card-custom p-4 mb-4 shadow-sm border-0">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-semibold mb-0">
+            <i class="bi bi-graph-up-arrow me-2 text-primary"></i>
+            Sertifikasi per Kompetensi
+        </h5>
+        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+            Statistik
+        </span>
+    </div>
+    <canvas id="chartKompetensi" height="120"></canvas>
 </div>
+
+
+
+
 
 
 
@@ -115,7 +127,7 @@
             @forelse($notifikasiTerbaru as $n)
                 <tr>
                     <td>{{ $n->judul }}</td>
-                    <td>{{ $n->sertifikat->nama_sertifikat ?? '—' }}</td>
+                    <td>{{ $n->sertifikat->sertifikasi ?? '—' }}</td>
                     <td>{{ \Carbon\Carbon::parse($n->tanggal_kirim)->format('d M Y') }}</td>
                     <td>
                         @if($n->status_kirim == 'berhasil')
@@ -148,26 +160,71 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const ctx = document.getElementById('chartDivisi');
+const ctx = document.getElementById('chartKompetensi');
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: {!! json_encode($sertifikatPerDivisi->keys()) !!},
-            datasets: [{
-                label: 'Jumlah Sertifikat',
-                data: {!! json_encode($sertifikatPerDivisi->values()) !!},
-                borderWidth: 1
-            }]
-        },
-        options: {
-            plugins: {
-                legend: { display: false }
+const labels = @json($grafikKompetensi->pluck('kompetensi'));
+const dataValues = @json($grafikKompetensi->pluck('total'));
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Jumlah Sertifikat',
+            data: dataValues,
+            backgroundColor: '#4f46e5', // biru modern
+            borderRadius: 12,
+            barThickness: 40
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 14,
+                        weight: 'bold'
+                    }
+                }
             },
-            scales: {
-                y: { beginAtZero: true }
+            tooltip: {
+                backgroundColor: '#111827',
+                titleFont: { size: 14 },
+                bodyFont: { size: 13 },
+                padding: 12,
+                cornerRadius: 8
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 12
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: '#e5e7eb'
+                },
+                ticks: {
+                    font: {
+                        size: 12
+                    }
+                }
             }
         }
-    });
+    }
+});
 </script>
 @endsection
+
+
+
+
+

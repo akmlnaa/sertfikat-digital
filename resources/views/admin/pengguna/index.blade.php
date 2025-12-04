@@ -26,6 +26,9 @@
                 <tr>
                     <th style="width:50px">#</th>
                     <th>Nama</th>
+                    <th>NIP</th>
+                    <th>Kompetensi</th>
+                    <th>Divisi</th>
                     <th>Email</th>
                     <th>No HP</th>
                     <th style="width:160px" class="text-center">Aksi</th>
@@ -36,6 +39,9 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $item->nama }}</td>
+                    <td>{{ $item->nip }}</td>
+                    <td>{{ $item->kompetensi }}</td>
+                    <td>{{ $item->divisi }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->no_hp ?? '-' }}</td>
                     <td class="text-center">

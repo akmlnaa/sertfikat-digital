@@ -32,7 +32,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $n->judul }}</td>
-                    <td>{{ $n->sertifikat->nama_sertifikat ?? '—' }}</td>
+                    <td>{{ $n->sertifikat->sertifikasi ?? '—' }}</td>
                     <td>
                         <span class="badge 
                             @if($n->status_kirim == 'Terkirim') bg-success

@@ -26,7 +26,7 @@
                 <tr>
                     <th style="width:50px">#</th>
                     <th>Nomor Sertifikat</th>
-                    <th>Nama Sertifikat</th>
+                    <th>Sertifikasi</th>
                     <th>Nama Pengguna</th>
                     <th>Tanggal Terbit</th>
                     <th>Tanggal Kadaluarsa</th>
@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $item->nomor_sertifikat }}</td>
-                    <td>{{ $item->nama_sertifikat }}</td>
+                    <td>{{ $item->sertifikasi }}</td>
                     <td>{{ $item->pengguna->nama ?? '—' }}</td>
                     <td>{{ \Carbon\Carbon::parse($item->tgl_terbit)->format('d M Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($item->tgl_kadaluarsa)->format('d M Y') }}</td>

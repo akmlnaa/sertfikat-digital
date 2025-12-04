@@ -30,9 +30,9 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Nama Sertifikat</label>
-            <input type="text" name="nama_sertifikat" class="form-control"
-                   value="{{ $sertifikat->nama_sertifikat }}" required>
+            <label class="form-label">Sertifikasi</label>
+            <input type="text" name="sertifikasi" class="form-control"
+                   value="{{ $sertifikat->sertifikasi }}" required>
         </div>
 
         <div class="row">

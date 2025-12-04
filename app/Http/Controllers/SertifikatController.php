@@ -32,7 +32,7 @@ public function index()
         $request->validate([
             'id_pengguna' => 'required',
             'nomor_sertifikat' => 'required',
-            'nama_sertifikat' => 'required',
+            'sertifikasi' => 'required',
             'tgl_terbit' => 'required|date',
             'tgl_kadaluarsa' => 'required|date',
             'status' => 'required'
@@ -69,7 +69,7 @@ public function update(Request $request, $id)
     $request->validate([
         'id_pengguna' => 'required|exists:pengguna,id_pengguna',
         'nomor_sertifikat' => 'required',
-        'nama_sertifikat' => 'required',
+        'sertifikasi' => 'required',
         'tgl_terbit' => 'required|date',
         'tgl_kadaluarsa' => 'required|date|after_or_equal:tgl_terbit',
         'status' => 'required'

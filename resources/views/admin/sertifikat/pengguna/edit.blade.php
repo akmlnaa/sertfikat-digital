@@ -7,7 +7,7 @@
 <div class="card card-custom p-4">
     <h5 class="fw-semibold mb-4"><i class="bi bi-pencil-square me-2"></i>Edit Data Pengguna</h5>
 
-    <form action="{{ route('pengguna.update', $pengguna->id_pengguna) }}" method="POST" enctype="multipart/form-data" class="row g-3">
+    <form action="{{ route('pengguna.update', $pengguna->id_pengguna) }}" method="POST" class="row g-3">
         @csrf
         @method('PUT')
 
@@ -22,8 +22,8 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label fw-medium">Kompetensi</label>
-            <input type="text" name="kompetensi" class="form-control" value="{{ $pengguna->kompetensi }}" required>
+            <label class="form-label fw-medium">Jabatan</label>
+            <input type="text" name="jabatan" class="form-control" value="{{ $pengguna->jabatan }}" required>
         </div>
 
         <div class="col-md-6">
@@ -39,21 +39,6 @@
         <div class="col-md-6">
             <label class="form-label fw-medium">No HP</label>
             <input type="text" name="no_hp" class="form-control" value="{{ $pengguna->no_hp }}" required>
-        </div>
-
-        <div class="col-12">
-            <label class="form-label fw-medium">Pas Foto</label>
-            @if($pengguna->foto)
-                <div class="mb-2">
-                    <img src="{{ asset('storage/' . $pengguna->foto) }}"
-                         alt="Pas Foto {{ $pengguna->nama }}"
-                         class="img-thumbnail"
-                         style="max-width: 150px; max-height: 200px;">
-                    <p class="text-muted small mt-1">Foto saat ini</p>
-                </div>
-            @endif
-            <input type="file" name="foto" class="form-control" accept="image/jpeg,image/png,image/jpg">
-            <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB. Ukuran foto 3x4 atau 4x6 (passport photo). Kosongkan jika tidak ingin mengubah foto.</small>
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-4">

@@ -6,7 +6,7 @@ use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\NotifikasiController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Route login/logout

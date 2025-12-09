@@ -6,6 +6,7 @@ use App\Models\Pengguna;
 use App\Models\Sertifikat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SertifikatController extends Controller
 {
@@ -35,10 +36,21 @@ public function index()
             'sertifikasi' => 'required',
             'tgl_terbit' => 'required|date',
             'tgl_kadaluarsa' => 'required|date',
-            'status' => 'required'
+            'status' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        Sertifikat::create($request->all());
+        $data = $request->all();
+
+        // Handle foto upload
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('sertifikat', $fileName, 'public');
+            $data['foto'] = $filePath;
+        }
+
+        Sertifikat::create($data);
 
         return redirect()->route('sertifikat.index')
                          ->with('success', 'Sertifikat berhasil ditambahkan!');
@@ -72,11 +84,27 @@ public function update(Request $request, $id)
         'sertifikasi' => 'required',
         'tgl_terbit' => 'required|date',
         'tgl_kadaluarsa' => 'required|date|after_or_equal:tgl_terbit',
-        'status' => 'required'
+        'status' => 'required',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
     ]);
 
     $sertifikat = Sertifikat::findOrFail($id);
-    $sertifikat->update($request->all());
+    $data = $request->all();
+
+    // Handle foto upload
+    if ($request->hasFile('foto')) {
+        // Delete old foto if exists
+        if ($sertifikat->foto && Storage::disk('public')->exists($sertifikat->foto)) {
+            Storage::disk('public')->delete($sertifikat->foto);
+        }
+
+        $file = $request->file('foto');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('sertifikat', $fileName, 'public');
+        $data['foto'] = $filePath;
+    }
+
+    $sertifikat->update($data);
 
     return redirect()->route('sertifikat.index')->with('success', 'Data sertifikat berhasil diperbarui!');
 }
@@ -84,6 +112,12 @@ public function update(Request $request, $id)
 public function destroy($id)
 {
     $sertifikat = Sertifikat::findOrFail($id);
+
+    // Delete foto if exists
+    if ($sertifikat->foto && Storage::disk('public')->exists($sertifikat->foto)) {
+        Storage::disk('public')->delete($sertifikat->foto);
+    }
+
     $sertifikat->delete();
 
     return redirect()->route('sertifikat.index')->with('success', 'Sertifikat berhasil dihapus.');

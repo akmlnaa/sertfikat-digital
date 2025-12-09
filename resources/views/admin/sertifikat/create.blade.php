@@ -7,7 +7,7 @@
 <div class="card card-custom p-4">
     <h5 class="fw-semibold mb-3"><i class="bi bi-plus-circle me-2"></i>Tambah Sertifikat</h5>
 
-    <form action="{{ route('sertifikat.store') }}" method="POST">
+    <form action="{{ route('sertifikat.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -48,6 +48,12 @@
                 <option value="kadaluarsa">Kadaluarsa</option>
                 <option value="dalam proses">Dalam Proses</option>
             </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foto Sertifikat (Opsional)</label>
+            <input type="file" name="foto" class="form-control" accept="image/jpeg,image/png,image/jpg">
+            <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB</small>
         </div>
 
         <div class="d-flex justify-content-end mt-4">

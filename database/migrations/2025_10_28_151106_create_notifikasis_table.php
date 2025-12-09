@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifikasis', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('notifikasi', function (Blueprint $table) {
+            $table->id('id_notifikasi');
+            $table->unsignedBigInteger('id_sertifikat');
+            $table->string('judul');
+            $table->text('isi_pesan');
+            $table->string('status_kirim')->default('pending');
+            $table->date('tanggal_kirim')->nullable();
+
+            $table->foreign('id_sertifikat')->references('id_sertifikat')->on('sertifikat')->onDelete('cascade');
         });
     }
 
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifikasis');
+        Schema::dropIfExists('notifikasi');
     }
 };

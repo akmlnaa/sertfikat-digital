@@ -7,7 +7,7 @@
 <div class="card card-custom p-4">
     <h5 class="fw-semibold mb-4"><i class="bi bi-person-plus me-2"></i>Tambah Pengguna Baru</h5>
 
-    <form action="{{ route('pengguna.store') }}" method="POST" enctype="multipart/form-data" class="row g-3">
+    <form action="{{ route('pengguna.store') }}" method="POST" class="row g-3">
         @csrf
         <div class="col-md-6">
             <label class="form-label fw-medium">Nama Lengkap</label>
@@ -20,8 +20,8 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label fw-medium">Kompetensi</label>
-            <input type="text" name="kompetensi" class="form-control" placeholder="Masukkan kompetensi" required>
+            <label class="form-label fw-medium">Jabatan</label>
+            <input type="text" name="jabatan" class="form-control" placeholder="Masukkan jabatan" required>
         </div>
 
         <div class="col-md-6">
@@ -37,12 +37,6 @@
         <div class="col-md-6">
             <label class="form-label fw-medium">No HP</label>
             <input type="text" name="no_hp" class="form-control" placeholder="Masukkan nomor HP" required>
-        </div>
-
-        <div class="col-12">
-            <label class="form-label fw-medium">Pas Foto (Opsional)</label>
-            <input type="file" name="foto" class="form-control" accept="image/jpeg,image/png,image/jpg">
-            <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB. Ukuran foto 3x4 atau 4x6 (passport photo)</small>
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-4">

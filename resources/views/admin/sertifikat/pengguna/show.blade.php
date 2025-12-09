@@ -7,61 +7,38 @@
 <div class="card card-custom p-4">
     <h5 class="fw-semibold mb-4"><i class="bi bi-person-vcard me-2"></i>Detail Pengguna</h5>
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label fw-medium">Nama Lengkap</label>
-                    <input type="text" class="form-control" value="{{ $pengguna->nama }}" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-medium">NIP</label>
-                    <input type="text" class="form-control" value="{{ $pengguna->nip }}" readonly>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label fw-medium">Kompetensi</label>
-                    <input type="text" class="form-control" value="{{ $pengguna->kompetensi }}" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-medium">Divisi</label>
-                    <input type="text" class="form-control" value="{{ $pengguna->divisi }}" readonly>
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <label class="form-label fw-medium">Email</label>
-                    <input type="text" class="form-control" value="{{ $pengguna->email }}" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-medium">No HP</label>
-                    <input type="text" class="form-control" value="{{ $pengguna->no_hp }}" readonly>
-                </div>
-            </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label fw-medium">Nama Lengkap</label>
+            <input type="text" class="form-control" value="{{ $pengguna->nama }}" readonly>
         </div>
-
-        <!-- Pas Foto Pengguna -->
-        <div class="col-md-4 text-center">
-            @if($pengguna->foto)
-                <div class="mb-2">
-                    <p class="fw-semibold mb-2">Pas Foto</p>
-                    <img src="{{ asset('storage/' . $pengguna->foto) }}"
-                         alt="Pas Foto {{ $pengguna->nama }}"
-                         class="img-thumbnail shadow-sm"
-                         style="max-width: 200px; max-height: 250px; object-fit: cover;">
-                </div>
-            @else
-                <div class="text-muted">
-                    <i class="bi bi-person-circle" style="font-size: 100px;"></i>
-                    <p class="small">Pas foto tidak tersedia</p>
-                </div>
-            @endif
+        <div class="col-md-6">
+            <label class="form-label fw-medium">NIP</label>
+            <input type="text" class="form-control" value="{{ $pengguna->nip }}" readonly>
         </div>
     </div>
 
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label fw-medium">Jabatan</label>
+            <input type="text" class="form-control" value="{{ $pengguna->jabatan }}" readonly>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label fw-medium">Divisi</label>
+            <input type="text" class="form-control" value="{{ $pengguna->divisi }}" readonly>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <label class="form-label fw-medium">Email</label>
+            <input type="text" class="form-control" value="{{ $pengguna->email }}" readonly>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label fw-medium">No HP</label>
+            <input type="text" class="form-control" value="{{ $pengguna->no_hp }}" readonly>
+        </div>
+    </div>
     <hr class="my-4">
 
 <h5 class="fw-semibold mb-3"><i class="bi bi-bell me-2"></i>Riwayat Notifikasi</h5>

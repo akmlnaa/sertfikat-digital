@@ -20,6 +20,7 @@ class Pengguna extends Model
         'divisi',
         'email',
         'no_hp',
+        'foto',
     ];
 
     public function sertifikat()

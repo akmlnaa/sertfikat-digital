@@ -7,7 +7,7 @@
 <div class="card card-custom p-4">
     <h5 class="fw-semibold mb-3"><i class="bi bi-pencil-square me-2"></i>Edit Sertifikat</h5>
 
-    <form action="{{ route('sertifikat.update', $sertifikat->id_sertifikat) }}" method="POST">
+    <form action="{{ route('sertifikat.update', $sertifikat->id_sertifikat) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -55,6 +55,21 @@
                 <option value="kadaluarsa" {{ $sertifikat->status == 'kadaluarsa' ? 'selected' : '' }}>Kadaluarsa</option>
                 <option value="dalam proses" {{ $sertifikat->status == 'dalam proses' ? 'selected' : '' }}>Dalam Proses</option>
             </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foto Sertifikat</label>
+            @if($sertifikat->foto)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $sertifikat->foto) }}"
+                         alt="Foto Sertifikat"
+                         class="img-thumbnail"
+                         style="max-width: 200px; max-height: 200px;">
+                    <p class="text-muted small mt-1">Foto saat ini</p>
+                </div>
+            @endif
+            <input type="file" name="foto" class="form-control" accept="image/jpeg,image/png,image/jpg">
+            <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB. Kosongkan jika tidak ingin mengubah foto.</small>
         </div>
 
         <div class="d-flex justify-content-end mt-4">

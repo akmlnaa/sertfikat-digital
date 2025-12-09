@@ -19,7 +19,8 @@ class Sertifikat extends Model
         'sertifikasi',
         'tgl_terbit',
         'tgl_kadaluarsa',
-        'status'
+        'status',
+        'foto'
     ];
     
     public function pengguna()
